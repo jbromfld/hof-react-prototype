@@ -1,18 +1,38 @@
+import axios from "axios";
 import React, { Component } from "react";
  
 class Home extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            taxons: []
+        }
+    }
+    componentDidMount() {
+        axios.get('/taxons')
+            .then((response) => {
+                // const taxon = response.data.map((taxons) => ({
+                //     id: taxons.data.id,
+                //     name: taxons.data.attributes.name
+                // }));
+                // this.setState({
+                //     taxon
+                // });
+                console.log(response);
+            });
+    }
   render() {
     return (
       <div>
         <h2>Home Page</h2>
-        <p>Cras facilisis urna ornare ex volutpat, et
-        convallis erat elementum. Ut aliquam, ipsum vitae
-        gravida suscipit, metus dui bibendum est, eget rhoncus nibh
-        metus nec massa. Maecenas hendrerit laoreet augue
-        nec molestie. Cum sociis natoque penatibus et magnis
-        dis parturient montes, nascetur ridiculus mus.</p>
- 
-        <p>Duis a turpis sed lacus dapibus elementum sed eu lectus.</p>
+        <ul>
+            {
+                this.state.taxons.map((taxons) => {
+                    return <li key={taxons.id}>{taxons.name}</li>
+                })
+            }
+        </ul>
       </div>
     );
   }
