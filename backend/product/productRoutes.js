@@ -1,7 +1,7 @@
 const productController = require('./productController');
 
 module.exports = (app) => {
- 
+
     // all products
     app.get('/products', productController.fetch);
 

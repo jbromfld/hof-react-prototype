@@ -1,7 +1,7 @@
 const cartController = require('./cartController');
 
 module.exports = (app) => {
- 
+
     app.get('/carts', cartController.fetch);
 
     app.get('/cart/:id', cartController.get);
@@ -11,7 +11,7 @@ module.exports = (app) => {
     app.put('/cart/:id', cartController.additem);
 
     app.delete('/cart/:id', cartController.deleteitem);
-    
+
     app.put('/cartItem/:id', cartController.update);
 
     app.delete('/cartItem/:id', cartController.delete);

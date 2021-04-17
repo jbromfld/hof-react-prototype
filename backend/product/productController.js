@@ -7,7 +7,7 @@ module.exports = {
         try {
             const response = await reqURL('https://demo.spreecommerce.org/api/v2/storefront/products', {
                 method: 'GET'
-            });       
+            });
             const data = await response.json();
             reply.code(200).send(data);
         } catch (err) {
@@ -21,7 +21,7 @@ module.exports = {
             const id = request.params.id;
             const response = await reqURL(`https://demo.spreecommerce.org/api/v2/storefront/products/${id}`, {
                 method: 'GET'
-            });       
+            });
             const data = await response.json();
             reply.code(200).send(data);
         } catch (err) {
@@ -36,7 +36,7 @@ module.exports = {
             const param = request.body
             const response = await reqURL(`https://demo.spreecommerce.org/api/v2/storefront/products?filter%5Btaxons%5D=${id}`, {
                 method: 'GET'
-            });       
+            });
             const data = await response.json();
             reply.code(200).send(data);
         } catch (err) {
