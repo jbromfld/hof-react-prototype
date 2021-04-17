@@ -1,3 +1,9 @@
+# `Hof Prototype`
+### `frontend:`
+* navigate to / and run `npm start` will start on http://localhost:8000
+### `backend:`
+* navigate to /backend and run `npm start` will start on http://localhost:3000
+
 # `Endpoints`
 ### `external`
 * http://localhost:3000/products
@@ -7,7 +13,7 @@
 * http://localhost:3000/taxons
 * http://localhost:3000/taxons/id
 
-### `our db`
+### `our db at mongodb://127.0.0.1:27017/hof-prototype`
 * http://localhost:3000/user
 * http://localhost:3000/user/id
 
