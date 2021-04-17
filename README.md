@@ -6,19 +6,27 @@
 
 # `Endpoints`
 ### `external`
-* http://localhost:3000/products
-* http://localhost:3000/products/id
-* http://localhost:3000/product/id (id of taxon)
+* GET http://localhost:3000/products > returns array of all products
+* GET http://localhost:3000/products/id > returns single product by id
+* GET http://localhost:3000/product/id (id of taxon) > returns all products within a taxon (product category) id
 
-* http://localhost:3000/taxons
-* http://localhost:3000/taxons/id
+* GET http://localhost:3000/taxons > return array of all taxons
+* GET http://localhost:3000/taxons/id > returns single taxon by id
 
 ### `our db at mongodb://127.0.0.1:27017/hof-prototype`
-* http://localhost:3000/user
-* http://localhost:3000/user/id
+* GET http://localhost:3000/user > returns all users
+* GET http://localhost:3000/user/id > returns single user by id
+* POST http://localhost:3000/user > creates single user
+* PUT http://localhost:3000/user/id > updates single user by id
+* DELETE http://localhost:3000/user/id > deletes single user by id
 
-* http://localhost:3000/carts
-* http://localhost:3000/cart/id
+Carts are distinguished by user.id - only 1 cart per user for prototype
+* GET http://localhost:3000/carts > returns all carts
+* GET http://localhost:3000/cart/id > returns single cart by user.id
+* POST http://localhost:3000/cart > creates single cart using user.id
+* PUT http://localhost:3000/cart/id > adds single item to cart by user.id with product details in body
+* POST http://localhost:3000/cart/id > updates item in cart (not done)
+* DELETE http://localhost:3000/deletecart/id > deletes entire cart by cart._id
 
 # Getting Started with Create React App
 
