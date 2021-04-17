@@ -1,18 +1,18 @@
 # Endpoints
-## external
->> http://localhost:3000/products
->> http://localhost:3000/products/id
->> http://localhost:3000/product/id (id of taxon)
+### external
+http://localhost:3000/products
+http://localhost:3000/products/id
+http://localhost:3000/product/id (id of taxon)
 
->> http://localhost:3000/taxons
->> http://localhost:3000/taxons/id
+http://localhost:3000/taxons
+http://localhost:3000/taxons/id
 
-## our db
->> http://localhost:3000/user
->> http://localhost:3000/user/id
+### our db
+http://localhost:3000/user
+http://localhost:3000/user/id
 
->> http://localhost:3000/carts
->> http://localhost:3000/cart/id
+http://localhost:3000/carts
+http://localhost:3000/cart/id
 
 # Getting Started with Create React App
 
