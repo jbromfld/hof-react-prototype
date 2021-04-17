@@ -2,17 +2,24 @@ const cartController = require('./cartController');
 
 module.exports = (app) => {
  
+    // all carts
     app.get('/carts', cartController.fetch);
 
-    app.get('/cart/:id', cartController.get);
+    // create cart and add one item (empty cart is not a document in database)
+    app.post('/cart', cartController.create);
 
-    app.post('/cart/:id', cartController.create);
+    // cart by cart.userId
+    app.get('/cart/:userid', cartController.get);
 
-    app.put('/cart/:id', cartController.additem);
+    // add item to cart
+    app.put('/cart/:userid', cartController.additem);
 
-    app.delete('/cart/:id', cartController.deleteitem);
+    // delete item from cart
+    app.delete('/cart/:userid', cartController.deleteitem);
     
-    app.put('/cartItem/:id', cartController.update);
+    // update item in cart
+    app.post('/cart/:userid', cartController.update);
 
-    app.delete('/cartItem/:id', cartController.delete);
+    // delete entire cart
+    app.delete('/deletecart/:id', cartController.delete);
 };

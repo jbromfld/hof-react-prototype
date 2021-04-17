@@ -1,6 +1,8 @@
 const User = require('./user');
 
 module.exports = {
+
+    // list of users
     fetch: async (request, reply) => {
         try {
             const users = await User.find({});
@@ -10,16 +12,18 @@ module.exports = {
         }
     },
 
+    // find by user.id
     get: async (request, reply) => {
         try {
             const id = request.params.id;
-            const getUser = await User.findById(id);
+            const getUser = await User.findOne({ id: id });
             reply.code(200).send(getUser);
         } catch (err) {
             console.log(err);
         }
     },
 
+    // create user
     create: async (request, reply) => {
         try {
             const user = request.body;
@@ -30,21 +34,27 @@ module.exports = {
         }
     },
 
+    // update user by user.id
     update: async (request, reply) => {
         try {
             const id = request.params.id;
             const params = request.body;
-            const updateUser = await User.findByIdAndUpdate(id,params);
-            reply.code(200).send('updated');
+            const userdoc = await User.findOne( { id: id })
+            const _id = userdoc._id
+            await User.findByIdAndUpdate(_id,params);
+            reply.code(200).send(`User ${userdoc.name} has been updated`)
         } catch (err) {
             console.log(err);
         }
     },
 
+    // delete user by user.id
     delete: async (request, reply) => {
         try {
             const id = request.params.id;
-            await User.findByIdAndDelete(id);
+            const userdoc = await User.findOne( { id: id })
+            const _id = userdoc._id
+            await User.findByIdAndDelete(_id);
             reply.code(200).send(`Deleted user ${id}`);
         } catch (err) {
             console.log(err);

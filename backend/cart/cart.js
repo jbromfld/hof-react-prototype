@@ -8,8 +8,7 @@ const productSchema = new mongoose.Schema({
 })
 
 const cartSchema = new mongoose.Schema({
-    userId: String,
-    userName: String,
+    userId: Number,
     createdDate: { type: Date, default: Date.now },
     products: [productSchema],
     totalCost: String

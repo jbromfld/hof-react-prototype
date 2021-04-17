@@ -7,6 +7,5 @@ module.exports = (app) => {
 
     // taxon by taxon id
     app.get('/taxons/:id', taxonController.get);
-
 };
 
