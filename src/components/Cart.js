@@ -36,7 +36,7 @@ class Cart extends Component {
     }
 
     componentDidMount() {
-        let userId = 1;
+        let userId = 1; // hard-coded userId
         axios.get(`/cart/${userId}`)
             .then((response) => {
                 const product = response.data.products.map((products) => ({
