@@ -29,7 +29,7 @@ module.exports = {
         try {
             const userId = request.params.userid;
             const cartId = request.params.id;
-            const getCart = await Cart.findOne({ userId: userId });            
+            const getCart = await Cart.findOne({ userId: userId });
             reply.code(200).send(getCart);
         } catch (err) {
             console.log(err);
@@ -56,7 +56,7 @@ module.exports = {
             const userId = request.params.userid;
             const getCart = await Cart.findOne({ userId: userId });
             const params = request.body
-            getCart.products.id(params._id).remove()            
+            getCart.products.id(params._id).remove()
             // const product_id = getCart.products.filter(function (products) {
             //     return products.productId === params.productId;
             // })

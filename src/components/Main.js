@@ -49,13 +49,11 @@ class Main extends Component {
                         ITW21
                     </Typography>
                         <Button ><NavLink className={classes.navLink} to="/">Home</NavLink></Button>
-                        <Button color="inherit"><NavLink className={classes.navLink} to="/products">Products</NavLink></Button>
                         <Button color="inherit"><NavLink className={classes.navLink} to="/cart">Cart</NavLink></Button>
                 </Toolbar>
             </AppBar>
             <div className="content">
                 <Route exact path="/" component={Home}/>
-                <Route path="/products" component={Products}/>
                 <Route path="/cart" component={Cart}/>
             </div>
           </div>

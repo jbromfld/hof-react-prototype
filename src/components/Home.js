@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import Drawer from '@material-ui/core/Drawer';
+import Divider from '@material-ui/core/Divider';
 import Hidden from '@material-ui/core/Hidden';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -67,6 +68,7 @@ class Home extends Component {
     const drawer = (
         <div>
             <div className={classes.toolbar}/>
+            <Divider />
             <List>
                 {
                     this.state.taxons.map((taxon) => {

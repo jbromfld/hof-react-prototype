@@ -15,7 +15,7 @@ module.exports = (app) => {
 
     // delete item from cart
     app.delete('/cart/:userid', cartController.deleteitem);
-    
+
     // update item in cart
     app.post('/cart/:userid', cartController.update);
 
