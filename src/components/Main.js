@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import './main.css'
 import {
   Route,
@@ -51,6 +52,7 @@ class Main extends Component {
                         <Button color="inherit"><NavLink className={classes.navLink} to="/cart">Cart</NavLink></Button>
                 </Toolbar>
             </AppBar>
+            <CssBaseline/>
             <div className="content">
                 <Route exact path="/" component={Home}/>
                 <Route path="/cart" component={Cart}/>

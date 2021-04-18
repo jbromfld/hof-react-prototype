@@ -61,7 +61,7 @@ const styles = theme => ({
       // Grid List of Card
       gridRoot: {
         flexGrow: 1,
-        padding: theme.spacing(2)
+        padding: theme.spacing(8)
       }
 });
 
@@ -93,17 +93,48 @@ class Home extends Component {
                 this.setState({ products: product });
             });
     }
-  render() {
+
+    taxonClicked (id) {
+      console.log(id);
+      axios.get(`/product/${id}`)
+        .then((response) => {
+          const product = response.data.data.map((products) => ({
+            id: products.id,
+            name: products.attributes.name,
+            display_price: products.attributes.display_price
+          }));
+          this.setState({ products: product });
+        });
+    }
+
+    AllButtonClicked () {
+      axios.get(`/products`)
+        .then((response) => {
+          const product = response.data.data.map((products) => ({
+            id: products.id,
+            name: products.attributes.name,
+            display_price: products.attributes.display_price
+          }));
+          this.setState({ products: product });
+        });
+    }
+
+    render() {
     const { classes } = this.props;
     const drawer = (
         <div>
             <div className={classes.toolbar}/>
+            <List>
+              <ListItem button onClick={() => this.AllButtonClicked()}>
+                <ListItemText primary="All Products" />
+              </ListItem>
+            </List>
             <Divider />
             <List>
                 {
                     this.state.taxons.map((taxon) => {
                         // console.log(taxon.id);
-                        return <ListItem button key={taxon.id}>
+                        return <ListItem button onClick={() => this.taxonClicked(taxon.id)} key={taxon.id}>
                             <ListItemText primary={taxon.name}/>
                         </ListItem>
                     })
