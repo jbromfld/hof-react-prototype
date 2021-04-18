@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import './main.css'
 import {
   Route,
   NavLink,
@@ -23,6 +24,10 @@ const styles = theme => ({
     },
     title: {
       flexGrow: 1
+    },
+    navLink: {
+      color: 'white',
+      textDecoration: 'none'
     }
   });
 
@@ -30,7 +35,6 @@ class Main extends Component {
     state = {
         searchNodes: ""
     };
-
     render() {
       const { classes } = this.props;
       return (
@@ -44,9 +48,9 @@ class Main extends Component {
                     <Typography variant="h6" className={classes.title}>
                         ITW21
                     </Typography>
-                        <Button color="inherit"><NavLink to="/">Home</NavLink></Button>
-                        <Button color="inherit"><NavLink to="/products">Products</NavLink></Button>
-                        <Button color="inherit"><NavLink to="/cart">Cart</NavLink></Button>
+                        <Button ><NavLink className={classes.navLink} to="/">Home</NavLink></Button>
+                        <Button color="inherit"><NavLink className={classes.navLink} to="/products">Products</NavLink></Button>
+                        <Button color="inherit"><NavLink className={classes.navLink} to="/cart">Cart</NavLink></Button>
                 </Toolbar>
             </AppBar>
             <div className="content">
