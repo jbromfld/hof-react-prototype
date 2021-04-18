@@ -12,7 +12,6 @@ import {
 } from "react-router-dom";
 
 import Home from "./Home";
-import Products from "./ProductItem";
 import Cart from "./Cart";
 
 const styles = theme => ({
