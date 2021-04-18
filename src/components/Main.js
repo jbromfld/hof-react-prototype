@@ -36,7 +36,10 @@ class Main extends Component {
       return (
         <HashRouter>
           <div className={classes.root}>
-            <AppBar position="static">
+            <AppBar
+              position="fixed"
+              style={{ zIndex: 1251 }}
+              >
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
                         ITW21
