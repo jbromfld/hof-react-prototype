@@ -14,6 +14,7 @@ import {
 
 import Home from "./Home";
 import Cart from "./Cart";
+import Products from './ProductItem'
 
 const styles = theme => ({
     root: {
@@ -49,6 +50,7 @@ class Main extends Component {
                         ITW21
                     </Typography>
                         <Button ><NavLink className={classes.navLink} to="/">Home</NavLink></Button>
+                        <Button ><NavLink className={classes.navLink} to="/products">Products</NavLink></Button>
                         <Button color="inherit"><NavLink className={classes.navLink} to="/cart">Cart</NavLink></Button>
                 </Toolbar>
             </AppBar>
@@ -56,6 +58,7 @@ class Main extends Component {
             <div className="content">
                 <Route exact path="/" component={Home}/>
                 <Route path="/cart" component={Cart}/>
+                <Route path="/products" component={Products}/>
             </div>
           </div>
         </HashRouter>

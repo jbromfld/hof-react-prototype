@@ -31,23 +31,32 @@ class Cart extends Component {
         super();
 
         this.state = {
-            products: []
-        }
+            products: [
+                {
+                    id: 1,
+                    name: "test name",
+                    color: ["red", "green", "blue"],
+                    size: ["XS", "S", "M", "L", "XL"],
+                    price: 69.99,
+                    isAvailable: true
+                }
+            ]
+        };
     }
 
     componentDidMount() {
         let userId = 1; // hard-coded userId
-        axios.get(`/cart/${userId}`)
-            .then((response) => {
-                const product = response.data.products.map((products) => ({
-                    id: products.productId,
-                    name: products.name,
-                    color: products.color,
-                    size: products.size,
-                    price: products.price
-                }));
-                this.setState({ products: product });
-            });
+        // axios.get(`/cart/${userId}`)
+        //     .then((response) => {
+        //         const product = response.data.products.map((products) => ({
+        //             id: products.productId,
+        //             name: products.name,
+        //             color: products.color,
+        //             size: products.size,
+        //             price: products.price
+        //         }));
+        //         this.setState({ products: product });
+        //     });
     }
     render() {
         const { classes } = this.props;
@@ -85,4 +94,3 @@ class Cart extends Component {
 }
              
 export default withStyles(styles, {withTheme: true})(Cart);
-            

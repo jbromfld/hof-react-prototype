@@ -19,8 +19,8 @@ import {
     NavLink,
     HashRouter
   } from "react-router-dom";
-import Cart from "./Cart";
-import Products from './ProductItem'
+  import Products from './ProductItem'
+  import Cart from "./Cart";
 
  
 const drawerWidth = 240;
@@ -182,7 +182,10 @@ class Home extends Component {
                 this.state.products.map((product) => (
                   <Grid item xs={12} sm={6} md={3} key={this.state.products.indexOf(product)}>
                       <Card>
-                        <NavLink to="/products">
+                        <NavLink to={{
+                            pathname: "/products",
+                            id: product.id
+                          }}>
                           <CardHeader
                               title={`image : ${product.id}`}
                               subheader={`${product.name}`}
@@ -201,8 +204,8 @@ class Home extends Component {
         </div>
       </div>
       <div>
-        <Route path="/products" component={Products}/>
-        <Route path="/cart" component={Cart}/>
+        <Route exact path="/cart" component={Cart}/>
+        <Route exact path="/products" component={Products}/>
       </div>
     </HashRouter>
     );
