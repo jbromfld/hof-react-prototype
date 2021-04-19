@@ -9,7 +9,6 @@
 * GET http://localhost:3000/products > returns array of all products
 * GET http://localhost:3000/products/id > returns single product by id
 * GET http://localhost:3000/product/id (id of taxon) > returns all products within a taxon (product category) id
-
 * GET http://localhost:3000/taxons > return array of all taxons
 * GET http://localhost:3000/taxons/id > returns single taxon by id
 
@@ -26,6 +25,7 @@ Carts are distinguished by user.id - only 1 cart per user for prototype
 * POST http://localhost:3000/cart > creates single cart using user.id
 * PUT http://localhost:3000/cart/id > adds single item to cart by user.id with product details in body
 * POST http://localhost:3000/cart/id > updates item in cart (not done)
+* DELETE http://localhost:3000/cart/cartid/[product] > deletes product from cart by cartid/[index of product to be deleted]
 * DELETE http://localhost:3000/deletecart/id > deletes entire cart by cart._id
 
 # Getting Started with Create React App
