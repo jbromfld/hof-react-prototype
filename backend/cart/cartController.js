@@ -50,16 +50,14 @@ module.exports = {
         }
     },
 
-    // delete single item from cart using cart.userId with the cart.products._id as query param
+    // delete single item from cart using cart.userId/cart.product[product index]
     deleteitem: async (request, reply) => {
         try {
-            const userId = request.params.userid;
+            const userId = request.params.userid; // cart.userid
+            const itemId = request.params.itemid; // cart.product[arry index]
             const getCart = await Cart.findOne({ userId: userId });
             const params = request.body
-            getCart.products.id(params._id).remove()
-            // const product_id = getCart.products.filter(function (products) {
-            //     return products.productId === params.productId;
-            // })
+            getCart.products[itemId].remove()
             getCart.save()
             reply.code(200).send(getCart);
         } catch (err) {

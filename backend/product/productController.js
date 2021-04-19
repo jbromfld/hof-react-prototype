@@ -42,5 +42,20 @@ module.exports = {
         } catch (err) {
             console.log(err);
         }
+    },
+
+    // products by price ------------------------not complete --------------------------
+    getpricefilter: async (request, reply) => {
+        try {
+            const id = request.params.id;
+            const param = request.body
+            const response = await reqURL(`https://demo.spreecommerce.org/api/v2/storefront/products?filter%5Bprice%5D[lt]=${id}`, {
+                method: 'GET'
+            });
+            const data = await response.json();
+            reply.code(200).send(data);
+        } catch (err) {
+            console.log(err);
+        }
     }
 };
