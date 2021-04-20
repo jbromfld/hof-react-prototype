@@ -11,6 +11,7 @@
 * GET http://localhost:3000/products/id > returns single product by id
 * GET http://localhost:3000/product/id (id of taxon) > returns all products within a taxon (product category) id
 * GET http://localhost:3000/products/filter/filterid > filter products
+    Price: filterid = 100 (<20),200 (21-50),300 (51-75),400 (>75)
 #### `taxons`
 * GET http://localhost:3000/taxons > return array of all taxons
 * GET http://localhost:3000/taxons/id > returns single taxon by id
