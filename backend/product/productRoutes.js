@@ -12,7 +12,7 @@ module.exports = (app) => {
     app.get('/product/:id', productController.getfilter);
 
     // product filter by price
-    // app.get('/productfilter/:id', productController.getpricefilter);
+    app.get('/products/filter/:id', productController.getpricefilter);
 
 };
 
