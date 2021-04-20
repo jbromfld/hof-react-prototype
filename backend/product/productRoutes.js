@@ -11,5 +11,8 @@ module.exports = (app) => {
     // products by taxon id
     app.get('/product/:id', productController.getfilter);
 
+    // product filter by price
+    app.get('/products/filter/:id', productController.getpricefilter);
+
 };
 
