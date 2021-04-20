@@ -6,19 +6,24 @@
 
 # `Endpoints`
 ### `external`
+#### `products`
 * GET http://localhost:3000/products > returns array of all products
 * GET http://localhost:3000/products/id > returns single product by id
 * GET http://localhost:3000/product/id (id of taxon) > returns all products within a taxon (product category) id
+* GET http://localhost:3000/products/filter/filterid > filter products
+#### `taxons`
 * GET http://localhost:3000/taxons > return array of all taxons
 * GET http://localhost:3000/taxons/id > returns single taxon by id
 
 ### `our db at mongodb://127.0.0.1:27017/hof-prototype`
+#### `users`
 * GET http://localhost:3000/user > returns all users
 * GET http://localhost:3000/user/id > returns single user by id
 * POST http://localhost:3000/user > creates single user
 * PUT http://localhost:3000/user/id > updates single user by id
 * DELETE http://localhost:3000/user/id > deletes single user by id
 
+#### `cart`
 Carts are distinguished by user.id - only 1 cart per user for prototype
 * GET http://localhost:3000/carts > returns all carts
 * GET http://localhost:3000/cart/id > returns single cart by user.id
