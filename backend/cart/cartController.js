@@ -58,6 +58,10 @@ module.exports = {
             const getCart = await Cart.findOne({ userId: userId });
             const params = request.body
             getCart.products[itemId].remove()
+            // getCart.products.id(params._id).remove()
+            // const product_id = getCart.products.filter(function (products) {
+            //     return products.productId === params.productId;
+            // })
             getCart.save()
             reply.code(200).send(getCart);
         } catch (err) {

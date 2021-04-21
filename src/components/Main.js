@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import './main.css'
 import {
   Route,
@@ -12,8 +13,8 @@ import {
 } from "react-router-dom";
 
 import Home from "./Home";
-import Products from "./ProductItem";
 import Cart from "./Cart";
+import Products from './ProductItem'
 
 const styles = theme => ({
     root: {
@@ -49,14 +50,15 @@ class Main extends Component {
                         ITW21
                     </Typography>
                         <Button ><NavLink className={classes.navLink} to="/">Home</NavLink></Button>
-                        <Button color="inherit"><NavLink className={classes.navLink} to="/products">Products</NavLink></Button>
+                        <Button ><NavLink className={classes.navLink} to="/products">Products</NavLink></Button>
                         <Button color="inherit"><NavLink className={classes.navLink} to="/cart">Cart</NavLink></Button>
                 </Toolbar>
             </AppBar>
+            <CssBaseline/>
             <div className="content">
                 <Route exact path="/" component={Home}/>
-                <Route path="/products" component={Products}/>
                 <Route path="/cart" component={Cart}/>
+                <Route path="/products" component={Products}/>
             </div>
           </div>
         </HashRouter>
