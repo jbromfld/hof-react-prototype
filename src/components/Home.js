@@ -1,16 +1,32 @@
 import axios from "axios";
 import React, { Component } from "react";
 import Drawer from '@material-ui/core/Drawer';
+import Divider from '@material-ui/core/Divider';
 import Hidden from '@material-ui/core/Hidden';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { withStyles } from '@material-ui/core/styles';
+import {
+    Grid,
+    Card,
+    CardContent,
+    Typography,
+    CardHeader
+} from '@material-ui/core/'
+import {
+    Route,
+    NavLink,
+    HashRouter
+  } from "react-router-dom";
+import Cart from "./Cart";
+import Products from './ProductItem'
+
  
 const drawerWidth = 240;
 
-
 const styles = theme => ({
+    //Drawer
     root: {
         display: 'flex',
       },
@@ -42,6 +58,11 @@ const styles = theme => ({
         padding: theme.spacing(3),
       },
 
+      // Grid List of Card
+      gridRoot: {
+        flexGrow: 1,
+        padding: theme.spacing(8)
+      }
 });
 
 class Home extends Component {
@@ -49,6 +70,7 @@ class Home extends Component {
         super();
 
         this.state = {
+            products: [],
             taxons: []
         }
     }
@@ -61,17 +83,58 @@ class Home extends Component {
                 }));
                 this.setState({ taxons: taxon });
             });
+        axios.get('/products')
+            .then((response) => {
+                const product = response.data.data.map((products) => ({
+                    id: products.id,
+                    name: products.attributes.name,
+                    display_price: products.attributes.display_price
+                }));
+                this.setState({ products: product });
+            });
     }
-  render() {
+
+    taxonClicked (id) {
+      console.log(id);
+      axios.get(`/product/${id}`)
+        .then((response) => {
+          const product = response.data.data.map((products) => ({
+            id: products.id,
+            name: products.attributes.name,
+            display_price: products.attributes.display_price
+          }));
+          this.setState({ products: product });
+        });
+    }
+
+    AllButtonClicked () {
+      axios.get(`/products`)
+        .then((response) => {
+          const product = response.data.data.map((products) => ({
+            id: products.id,
+            name: products.attributes.name,
+            display_price: products.attributes.display_price
+          }));
+          this.setState({ products: product });
+        });
+    }
+
+    render() {
     const { classes } = this.props;
     const drawer = (
         <div>
             <div className={classes.toolbar}/>
             <List>
+              <ListItem button onClick={() => this.AllButtonClicked()}>
+                <ListItemText primary="All Products" />
+              </ListItem>
+            </List>
+            <Divider />
+            <List>
                 {
                     this.state.taxons.map((taxon) => {
                         // console.log(taxon.id);
-                        return <ListItem button key={taxon.id}>
+                        return <ListItem button onClick={() => this.taxonClicked(taxon.id)} key={taxon.id}>
                             <ListItemText primary={taxon.name}/>
                         </ListItem>
                     })
@@ -81,6 +144,7 @@ class Home extends Component {
     )
 
     return (
+    <HashRouter>
       <div className={classes.root}>
         <nav className={classes.drawer}>
             <Hidden smUp implementation="css">
@@ -106,7 +170,41 @@ class Home extends Component {
           </Drawer>
         </Hidden>
         </nav>
+        <div className={classes.gridRoot}>
+              <Grid
+                container
+                spacing={2}
+                direction="row"
+                justify="flex-start"
+                alignItems="flex-start"
+              >
+              {
+                this.state.products.map((product) => (
+                  <Grid item xs={12} sm={6} md={3} key={this.state.products.indexOf(product)}>
+                      <Card>
+                        <NavLink to="/products">
+                          <CardHeader
+                              title={`image : ${product.id}`}
+                              subheader={`${product.name}`}
+                          />
+                          <CardContent>
+                              <Typography variant="h5" gutterBottom>
+                                  {product.display_price}
+                              </Typography>
+                          </CardContent>
+                        </NavLink>
+                      </Card>
+                  </Grid>
+                ))
+              }
+          </Grid>
+        </div>
       </div>
+      <div>
+        <Route path="/products" component={Products}/>
+        <Route path="/cart" component={Cart}/>
+      </div>
+    </HashRouter>
     );
   }
 }
